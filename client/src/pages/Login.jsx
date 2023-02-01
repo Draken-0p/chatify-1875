@@ -6,10 +6,12 @@ import Logo from "../assets/logo.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { loginRoute } from "../utils/APIRoutes";
+import { set } from "mongoose";
 
 export default function Login() {
   const navigate = useNavigate();
   const [values, setValues] = useState({ username: "", password: "" });
+ 
   const toastOptions = {
     position: "bottom-right",
     autoClose: 8000,
@@ -60,11 +62,17 @@ export default function Login() {
       }
     }
   };
+  const guest = (e)=>{
+    e.preventDefault()
+     setValues({username:"admin" , password:"12345678"})
+  }
+
+
 
   return (
     <>
       <FormContainer>
-        <form action="" onSubmit={(event) => handleSubmit(event)}>
+        <form action="" >
           <div className="brand">
             <img src={Logo} alt="logo" />
             <h1>CHATIFY</h1>
@@ -73,16 +81,19 @@ export default function Login() {
             type="text"
             placeholder="Username"
             name="username"
+            value={values.username}
             onChange={(e) => handleChange(e)}
             min="3"
           />
           <input
             type="password"
             placeholder="Password"
+            value={values.password}
             name="password"
             onChange={(e) => handleChange(e)}
           />
-          <button type="submit">Log In</button>
+          <button onClick={(event) => handleSubmit(event)}>Log In</button>
+          <button onClick={(e)=>{guest(e)}} style={{backgroundColor:"red"}} >Get Guest Login</button>
           <span>
             Don't have an account ? <Link to="/register">Create One.</Link>
           </span>
