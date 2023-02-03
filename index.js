@@ -7,7 +7,7 @@ const app = express();
 const socket = require("socket.io");
 const path = require('path');
 require("dotenv").config();
-app.use(cors());
+app.use(cors({ origin: '*'}));
 app.use(express.json());
 
 mongoose
@@ -50,7 +50,7 @@ const server = app.listen(process.env.PORT, () =>
 
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
     credentials: true,
   },
 });
