@@ -4,15 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev" : "node index.js",
-    "start": "node index.js",
+    "dev": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "frontend": "cd client && npm start",
+    "backend": "node index.js"
   },
   "author": "Shrey Jain",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "concurrently": "^7.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",

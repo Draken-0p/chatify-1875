@@ -7,7 +7,7 @@ const app = express();
 const socket = require("socket.io");
 const path = require('path');
 require("dotenv").config();
-app.use(cors({ origin: '*'}));
+app.use(cors());
 app.use(express.json());
 
 mongoose

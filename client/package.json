@@ -1,5 +1,6 @@
 {
   "name": "chat-app",
+  "proxy":"https://chatify-1875.vercel.app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
